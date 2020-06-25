@@ -1,0 +1,5 @@
+c:\\aplicacion\\programa_principal.py
+c:\\aplicacion\\m_ingresos.py
+c:\\aplicacion\\m_calculos.py
+c:\\aplicacion\\m_impresiones.py
+c:\\aplicacion\\m_generales.py 
