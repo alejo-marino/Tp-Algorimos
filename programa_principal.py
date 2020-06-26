@@ -1,14 +1,13 @@
 def leer(archivo):
-    linea = archivo.readlines()
+    linea = archivo.redlines()
 
     if linea:
         devolver = linea.rstrip("\n").split(",")
 
     else:
-        devolver = "","","",""
-    
-    return devolver
+        devolver = "", "", "", ""
+
+    return linea
+
 
 leer("programas.txt")
-
-
