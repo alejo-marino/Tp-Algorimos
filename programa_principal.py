@@ -7,4 +7,4 @@ def leer(archivo):
     else:
         devolver = "","","",""
     
-    return linea
+    return devolver
