@@ -27,6 +27,7 @@ def leer_py(archivo):
                 elif linea.strip().startswith('return'):
                     linea_return = linea
                     index_final = lineas.index(linea_return) + 1
-                    return nombre_funcion,parametros,modulo,lineas[index_inicial:index_final]
+                    cuerpo = lineas[index_inicial:index_final]
+                    return nombre_funcion,parametros,modulo,cuerpo
                    
 leer_py(txt)
