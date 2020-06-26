@@ -8,3 +8,7 @@ def leer(archivo):
         devolver = "","","",""
     
     return devolver
+
+leer("programas.txt")
+
+
