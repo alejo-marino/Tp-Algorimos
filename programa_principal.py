@@ -1,5 +1,5 @@
 def leer(archivo):
-    linea = archivo.redlines()
+    linea = archivo.readlines()
 
     if linea:
         devolver = linea.rstrip("\n").split(",")
