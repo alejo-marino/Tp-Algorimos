@@ -1,18 +1,16 @@
-def leer_txt():
-    with open('programas.txt') as f:
-        modulos = [linea.rstrip('\n') for linea in f]
-        return modulos
+txt = 'programas.txt'
 
-
-def leer_py(mod):
-    for modulos in mod:
-        with open(modulos) as f:
-            modulos = [linea.rstrip('\n') for linea in f]
-            for lineas in modulos:
-                if lineas.startswith('def'):
-                    print(lineas)
-
-        print(modulos)
-
-
-leer_py(leer_txt())
+def leer(archivo):
+    with open(archivo) as f:
+        lineas = [linea.rstrip('\n') for linea in f]
+        return lineas
+        
+def leer_py(archivo):
+        modulos = leer(archivo)
+        for modulo in modulos:
+            lineas = leer(modulo)
+            for linea in lineas:
+                if linea.startswith('def '):
+                    print(linea)
+                                   
+leer_py(txt)
