@@ -11,6 +11,7 @@ def leer_py(archivo):
             lineas = leer(modulo)
             for linea in lineas:
                 if linea.startswith('def '):
-                    print(linea)
+                    print(linea,modulo)
                                    
+            print(lineas)
 leer_py(txt)
