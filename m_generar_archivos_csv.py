@@ -6,17 +6,27 @@ def leer(archivo):
         lineas = [linea.rstrip('\n') for linea in f]
         return lineas
 
+def test(aaa):
+    pass
+    return None
+
+
 
 def leer_py(archivo):
         modulos = leer(archivo)
         for modulo in modulos:
             lineas = leer(modulo)
             for linea in lineas:
+                  
                 if linea.startswith('def '):
                     funcion = linea
+                    index_inicial = lineas.index(funcion) +1
                     nombre_funcion = funcion.split('def ')[1].lstrip().split('(')[0]
                     parametros = funcion.split('(')[1].lstrip().split(')')[0]
-                    print(nombre_funcion,parametros,modulo)
-                                   
-           
+                     
+                elif linea.strip().startswith('return'):
+                    linea_return = linea
+                    index_final = lineas.index(linea_return) + 1
+                    return funcion,nombre_funcion,parametros,modulo,lineas[index_inicial:index_final]
+                   
 leer_py(txt)
