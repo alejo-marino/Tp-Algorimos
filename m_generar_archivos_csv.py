@@ -11,7 +11,10 @@ def leer_py(archivo):
             lineas = leer(modulo)
             for linea in lineas:
                 if linea.startswith('def '):
-                    print(linea,modulo)
+                    funcion = linea
+                    nombre_funcion = funcion.split('def ')[1].lstrip().split('(')[0]
+                    parametros = funcion.split('(')[1].lstrip().split(')')[0]
+                    print(nombre_funcion,parametros,modulo)
                                    
-            print(lineas)
+           
 leer_py(txt)
