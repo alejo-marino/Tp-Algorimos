@@ -1,13 +1,13 @@
-def leer(archivo):
-    linea = archivo.redlines()
+def leer_1(codigo):
+
+    linea = codigo.readline()
 
     if linea:
-        devolver = linea.rstrip("\n").split(",")
+        salida = linea.rstrip("\n")
 
     else:
-        devolver = "", "", "", ""
+        salida = ""
 
-    return linea
+    return salida
 
 
-leer("programas.txt")

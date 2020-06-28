@@ -1,22 +1,44 @@
+Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
+		leer_1,						codigo,				programa_principal.py,
 
-txt = 'programas.txt'
+Cuerpo de la funcion:
 
 
-def leer(archivo):
+    linea = codigo.readline()
+
+    if linea:
+        salida = linea.rstrip("\n")
+
+    else:
+        salida = ""
+
+    return print(salida)
+
+Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
+		leer,						archivo,				m_generar_archivos_csv.py,
+
+Cuerpo de la funcion:
+
     
     lineas = [linea.rstrip('\n') for linea in archivo]
     
     return lineas
 
+Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
+		abro_ar,						archivo,				m_generar_archivos_csv.py,
 
-def abro_ar(archivo):
+Cuerpo de la funcion:
+
     
     with open(archivo) as archivo_completo:
         
         return leer(archivo_completo)
 
+Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
+		leer_py,						archivo,				m_generar_archivos_csv.py,
 
-def leer_py(archivo):
+Cuerpo de la funcion:
+
     import modulo_csv
     modulos = abro_ar(archivo)
     for modulo in modulos:
@@ -38,12 +60,10 @@ def leer_py(archivo):
 
     return None
 
+Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
+		main,						,				m_generar_archivos_csv.py,
+
+Cuerpo de la funcion:
 
 
-def main():
 
-    leer_py(txt)
-
-    return None
-
-main()
