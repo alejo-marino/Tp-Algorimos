@@ -2,7 +2,7 @@ def armo_csv(dic_ordenado):
     
     with open ("fuente_unico.csv","a") as codigo:
         
-        codigo.write("Nombre de la funcion \t\t Parametros formales \t\t Nombre del modulo\n\n")
+        # codigo.write("Nombre de la funcion Parametros formales Nombre del modulo")
        
         for clave in dic_ordenado:
             
@@ -11,11 +11,11 @@ def armo_csv(dic_ordenado):
             modulo = clave[1][1]
             cuerpo = clave[1][2]
 
-            funcion = "\n".join(cuerpo)
+            funcion = ", ".join(cuerpo)
+
+            # codigo.write(nombre_funcion+",\t\t\t\t\t\t"+parametros+",\t\t\t\t"+modulo+",\n\n"+"Cuerpo de la funcion:\n\n"+funcion+"\n\n")
             
-            codigo.write(nombre_funcion+",\t\t\t\t\t\t"+parametros+",\t\t\t\t"+modulo+",\n\n"+"Cuerpo de la funcion:\n\n"+funcion+"\n\n")
-            
-            """codigo.write(nombre_funcion+","+parametros+","+modulo+","+funcion) ESTE LO CARGA MAS LIMPIO"""
+            codigo.write(nombre_funcion+","+parametros+","+modulo+","+funcion+"\n")
            
             """codigo.write(nombre_funcion+","+parametros+","+modulo+","+"\n\n"+funcion+"\n\n") ESTE LO CARGA MAS LIMPIO"""
     
