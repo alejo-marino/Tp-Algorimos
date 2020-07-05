@@ -1,4 +1,4 @@
-
+import contar_funciones
 txt = 'programas.txt'
 
 
@@ -40,7 +40,7 @@ def leer_py(archivo):
                 cuerpo = lineas[index_inicial:index_final]
                 
                 datos[nombre_funcion] = [parametros,modulo,cuerpo]
-           
+
     funciones_alfabeto = sorted(datos.items(),key = lambda clave: clave[0], reverse = True)
 
     return modulo_csv.armo_csv(funciones_alfabeto)
