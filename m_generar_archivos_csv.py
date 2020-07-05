@@ -1,41 +1,32 @@
-import contar_funciones
-txt = 'programas.txt'
-
+import modulo_csv
 
 def leer(archivo):
+    """[Autor: A]"""
+    """El comenterario tiene que ser excluido """
+    #OtroComment 
+    #AAA
+    """[Ayuda: Lee el archivo linea por linea]"""
     
-    """ El comenterario tiene que ser excluido """
-    
-    # El comenterario tiene que ser excluido
-
     lineas = [linea.rstrip('\n') for linea in archivo]
-    
     return lineas
 
-
 def abro_ar(archivo):
+    """[Autor: b]"""
+    """[Ayuda: abre un archivo]"""
     
     with open(archivo) as archivo_completo:
-        
         return leer(archivo_completo)
 
-def remover_comentarios(lista_cuerpo,nombre_funcion):
-    import modulo_csv
-    comentario_triple = "\"\"\""
-    nombre_archivo = "comentarios.csv"
-    datos_comentarios = {}
-    for i in lista_cuerpo:
-        if i.strip().startswith("#") or i.strip().startswith(comentario_triple):
-            j = lista_cuerpo.index(i)
-            cuerpo = lista_cuerpo.pop(j)
-            autor = cuerpo #TODO Falta
-            ayuda = cuerpo #TODO FALTA 
-            datos_comentarios[nombre_funcion] = [autor,ayuda,cuerpo]
-            alfabeticamente = sorted(datos_comentarios.items(),key = lambda clave: clave[0], reverse = False)
-            return modulo_csv.armo_csv(alfabeticamente,nombre_archivo)
-        
-def leer_py(archivo):
-    import modulo_csv
+def ordenar_alfabeticamente(diccionario):
+    """[Autor: b]"""
+    """[Ayuda: abre un archivo]"""
+    
+    return sorted(diccionario.items(),key = lambda clave: clave[0], reverse = False)
+
+def armar_csv_funciones(archivo):
+    """[Autor: b]"""
+    """[Ayuda: abre un archivo]"""
+
     datos = {}
     nombre_archivo = "fuente_unico.csv"
     modulos = abro_ar(archivo)
@@ -53,19 +44,38 @@ def leer_py(archivo):
                 linea_return = linea
                 index_final = lineas.index(linea_return) + 1
                 cuerpo = lineas[index_inicial:index_final]
-                remover_comentarios(cuerpo,nombre_funcion)
+                armar_csv_comentarios(cuerpo,nombre_funcion)
                 datos[nombre_funcion] = [parametros,modulo,cuerpo]
 
-    funciones_alfabeto = sorted(datos.items(),key = lambda clave: clave[0], reverse = False)
+    funciones_alfabeto = ordenar_alfabeticamente(datos)
 
     return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo)
 
-
-def main():
-
-    leer_py(txt)
+def armar_csv_comentarios(lista_cuerpo,nombre_funcion):
+    """[Autor: D]"""
+    """[Ayuda: Remueve los comentarios de la funcion y crea el archivo comentarios.csv]"""
     
+    comentario_triple = '\"\"\"'
+    nombre_archivo = 'comentarios.csv'
+    datos_comentarios = {}
+    lista = lista_cuerpo    
+    for linea in lista:
 
-    return None
+        if linea.lstrip().startswith(comentario_triple) or linea.lstrip().startswith('#'):
+            ind = lista_cuerpo.index(linea)
+            k = lista_cuerpo.pop(ind)
+            nombre_ayuda  = ""
+            nombre_autor = ""
+            cuerpo = ""
+            if linea.lstrip().startswith(comentario_triple+"[Autor:"):
+                linea_autor = linea
+                nombre_autor = linea_autor.split('[Autor:')[1].lstrip().split(']')[0]
 
-main()
+            elif linea.lstrip().startswith(comentario_triple+"[Ayuda:"):
+                linea_ayuda = linea
+                nombre_ayuda = linea_ayuda.split('[Ayuda:')[1].lstrip().split(']')[0]        
+            else:
+                cuerpo = [i for i in lista if (i.lstrip().startswith('#') or i.lstrip().startswith('#'))]
+                datos_comentarios[nombre_funcion] = [nombre_autor,nombre_ayuda,cuerpo] 
+        alfabetico = ordenar_alfabeticamente(datos_comentarios)
+        return modulo_csv.armo_csv(alfabetico,nombre_archivo)       
