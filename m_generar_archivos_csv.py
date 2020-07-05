@@ -19,6 +19,15 @@ def abro_ar(archivo):
         
         return leer(archivo_completo)
 
+def remover_comentarios(lista_cuerpo,nombre_funcion):
+    comentario_triple = "\"\"\""
+    for i in lista_cuerpo:
+        if i.strip().startswith("#") or i.strip().startswith(comentario_triple):
+            j = lista_cuerpo.index(i)
+            k = lista_cuerpo.pop(j)
+            datos_comentarios[nombre_funcion] = [k]
+            #TODO: Queda pasarlo a csv
+
 
 def leer_py(archivo):
     import modulo_csv
@@ -38,10 +47,10 @@ def leer_py(archivo):
                 linea_return = linea
                 index_final = lineas.index(linea_return) + 1
                 cuerpo = lineas[index_inicial:index_final]
-                
+                remover_comentarios(cuerpo,nombre_funcion)
                 datos[nombre_funcion] = [parametros,modulo,cuerpo]
 
-    funciones_alfabeto = sorted(datos.items(),key = lambda clave: clave[0], reverse = True)
+    funciones_alfabeto = sorted(datos.items(),key = lambda clave: clave[0], reverse = False)
 
     return modulo_csv.armo_csv(funciones_alfabeto)
 
