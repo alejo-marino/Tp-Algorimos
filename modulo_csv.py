@@ -1,4 +1,5 @@
 def armo_csv(dic_ordenado,nombre_archivo):
+<<<<<<< HEAD
     if nombre_archivo == "fuente_unico.csv":
     
         with open (nombre_archivo,"a") as codigo:
@@ -38,3 +39,17 @@ def armo_csv(dic_ordenado,nombre_archivo):
                     
     else:
         print("Como llegamos aca. Ayuda")
+=======
+    """[Autor: F] """
+    """[Ayuda: Hace cosas] """
+    with open (nombre_archivo,"a") as codigo:
+        for clave in dic_ordenado:
+            #Modelo de parametros
+            nombre_funcion = clave[0]
+            parametros = clave[1][0]
+            modulo = clave[1][1]
+            cuerpo = clave[1][2]
+            funcion = ", ".join(cuerpo)
+            #Escribo en el csv
+            codigo.write(nombre_funcion+","+parametros+","+modulo+","+funcion+"\n")
+>>>>>>> feature/arregloschicos
